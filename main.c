@@ -81,7 +81,7 @@ int main(void)
 					//HALF_STEP 8 PASSOS/revolucao 500 passos para 45 graus
 					//4096 PASSOS para 1 revolucao
 					passos+=8;
-					if(passos%40956 == 0){
+					if(passos%4096 == 0){
 						voltas--;
 						estado = 2;
 					}else if(passos%500 == 0){

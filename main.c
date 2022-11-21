@@ -21,7 +21,7 @@ void mostrar_dados(uint32_t sentido,uint32_t velocidade,uint32_t voltas);
 void mensagem_final();
 void sequencia_leds(uint32_t sentido);
 void GPIOPortJ_Handler();
-uint32_t estado = 0;//estado inicial
+uint32_t estado = 0, controle = 0;//estado inicial
 
 int main(void)
 {
@@ -38,44 +38,50 @@ int main(void)
 		switch(estado){
 			case 0:
 				//Resetar
+				controle=1;
 				voltas=0,sentido=0,velocidade=0,passos = 0;
-				estado = 1;
+				if(controle==1)estado = 1;
 				break;
 			
 			case 1:
 				//Mostrar menu perguntando quantidade de voltas, sentido de rotacao e velocidade
+				controle=1;
 				estado = get_dados(&voltas,&sentido,&velocidade);
+				if(controle==0)estado=0;
 			  break;
 			
 			case 2:
 				//Mostrar no display o sentido e a velocidade e número de voltas sendo decrementado
+				controle=1;
 				mostrar_dados(sentido, velocidade, voltas);
 				if(voltas>0){
-					estado = 4;
+					if(controle==1)estado = 4;
 				}else{
-					estado = 5;
+					if(controle==1)estado = 5;
 				}
 				break;
 				
 			case 3:
+				controle = 1;
 				sequencia_leds(sentido);
-				estado = 4;
+				if(controle==1)estado = 4;
 				break;
 			
 			case 4:
 				//girar o motor com os parametros especificados, tambem cria efeito nos leds a cada 45 graus 
+				controle = 1;//Serve para delimitar uma regiao critica para a interrupcao no push button sw1
 			  Girar_motor(sentido,velocidade);
-			
+				
 				if(velocidade == 0){
 					//FULL-STEP 4 PASSOS/revolucao 250 passos para 45 graus
 					//2048 PASSOS para 1 revolucao
 					passos+=4;;
 					if(passos%2048==0){
 						voltas--;
-						estado = 2;
+						if(controle==1)estado = 2;
 					}else if(passos%250 == 0){
 					//45 graus atingido, efeito nos leds
-						estado = 3;
+						if(controle==1)estado = 3;
 					}
 				}else if(velocidade == 1){
 					//HALF_STEP 8 PASSOS/revolucao 500 passos para 45 graus
@@ -83,10 +89,10 @@ int main(void)
 					passos+=8;
 					if(passos%4096 == 0){
 						voltas--;
-						estado = 2;
+						if(controle==1)estado = 2;
 					}else if(passos%500 == 0){
 					//45 graus atingido, efeito nos leds
-						estado = 3;
+						if(controle==1)estado = 3;
 					}
 				}
 				
@@ -94,8 +100,9 @@ int main(void)
 			
 			case 5:
 				//Processo finalizado, mostrar mensagem final
+				controle = 1;
 				mensagem_final();
-				estado = 0;
+		    estado = 0;
 				break;
 			
 		}

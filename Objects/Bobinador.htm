@@ -1,11 +1,11 @@
 <!doctype html public "-//w3c//dtd html 4.0 transitional//en">
 <html><head>
-<title>Static Call Graph - [.\Objects\exemplo.axf]</title></head>
+<title>Static Call Graph - [.\Objects\Bobinador.axf]</title></head>
 <body><HR>
-<H1>Static Call Graph for image .\Objects\exemplo.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6180002: Last Updated: Mon Nov 21 00:23:22 2022
+<H1>Static Call Graph for image .\Objects\Bobinador.axf</H1><HR>
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6180002: Last Updated: Mon Nov 21 01:04:01 2022
 <BR><P>
-<H3>Maximum Stack Usage =        120 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =        128 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
 __rt_entry_main &rArr; main &rArr; get_dados &rArr; LCD_String &rArr; LCD_Dado
 <P>
@@ -630,7 +630,7 @@ Global Symbols
 <P><STRONG><a name="[ae]"></a>__rt_entry_postsh_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$00000009))
 
 <P><STRONG><a name="[76]"></a>__rt_entry_main</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$0000000D))
-<BR><BR>[Stack]<UL><LI>Max Depth = 120 + Unknown Stack Size
+<BR><BR>[Stack]<UL><LI>Max Depth = 128 + Unknown Stack Size
 <LI>Call Chain = __rt_entry_main &rArr; main &rArr; get_dados &rArr; LCD_String &rArr; LCD_Dado
 </UL>
 <BR>[Calls]<UL><LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;exit
@@ -726,7 +726,7 @@ Global Symbols
 
 <P><STRONG><a name="[bd]"></a>__semihosting_library_function</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, indicate_semi.o(.text), UNUSED)
 
-<P><STRONG><a name="[3d]"></a>GPIOPortJ_Handler</STRONG> (Thumb, 44 bytes, Stack size 0 bytes, gpio.o(.text.GPIOPortJ_Handler))
+<P><STRONG><a name="[3d]"></a>GPIOPortJ_Handler</STRONG> (Thumb, 54 bytes, Stack size 0 bytes, gpio.o(.text.GPIOPortJ_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup.o(RESET)
 </UL>
 <P><STRONG><a name="[8a]"></a>GPIO_Init</STRONG> (Thumb, 590 bytes, Stack size 0 bytes, gpio.o(.text.GPIO_Init))
@@ -807,8 +807,8 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[77]"></a>main</STRONG> (Thumb, 394 bytes, Stack size 40 bytes, main.o(.text.main))
-<BR><BR>[Stack]<UL><LI>Max Depth = 120 + Unknown Stack Size
+<P><STRONG><a name="[77]"></a>main</STRONG> (Thumb, 630 bytes, Stack size 48 bytes, main.o(.text.main))
+<BR><BR>[Stack]<UL><LI>Max Depth = 128 + Unknown Stack Size
 <LI>Call Chain = main &rArr; get_dados &rArr; LCD_String &rArr; LCD_Dado
 </UL>
 <BR>[Calls]<UL><LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mensagem_final

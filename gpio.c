@@ -26,7 +26,9 @@ void GPIOPortJ_Handler();
 #define GPIO_PORTP  (0x2000) //bit 13
 #define GPIO_PORTJ  (0x0100) //bit 8
 
-extern uint32_t estado;
+extern uint32_t estado, controle;
+
+
 char TECLADO[] = {'1','4','7','*','2','5','8','0','3','6','9','#','A','B','C','D'};
 // -------------------------------------------------------------------------------
 // Função GPIO_Init
@@ -237,25 +239,24 @@ uint32_t Le_teclado(){
 // Parâmetro de entrada: sentido = 0 horario, sentido = 1 anti-horario, modo = 0 full-step, modo = 1 half_step 
 // Parâmetro de saída: Não tem
 void Girar_motor(uint32_t sentido,uint32_t modo){
-		//sentido = 0 horario modo = 0 full step
-		//FULL STEP 2 FASES LIGADAS POR VEZ
-	  // H3 H2 H1 H0   - PORTH
-	  // 1   2  3  4   - BOBINAS
-		// 1   1  0  0
-		// 0   1  1  0
-	  // 0   0  1  1
-	  // 1   0  0  1
-		//HALF STEP 1 ou 2 FASES LIGADAS POR VEZ
-	  // H3 H2 H1 H0   - PORTH
-	  // 1   2  3  4   - BOBINAS
-		// 1   0  0  0   0x08
-		// 1   1  0  0 	 0x0C	
-	  // 0   1  0  0	 0x04
-	  // 0   1  1  0	 0x06	
-		// 0   0  1  0   0x02
-		// 0   0  1  1   0x03
-	  // 0   0  0  1   0x01
-	  // 1   0  0  1   0x09
+		//                             sentido = 0 horario modo = 0 full step
+		//        AZUL ROXO AMARELO LARANJA                           FULL STEP 2 FASES LIGADAS POR VEZ
+	  //PASSO   H3    H2   H1       H0       - PORTH
+	  //	 			1     2    3        4   - BOBINAS
+		//1 		  1     1    0        0
+		//2  			0     1    1        0
+	  //3  			0     0    1        1
+	  //4  			1     0    0        1
+		//HALF STEP 1 ou 2 FASES LIGADAS POR VEZ				  
+	  // PASSO	1     2    3        4   - BOBINAS
+		// 1			1   	0  	 0  			0    	0x08
+		// 2			1   	1  	 0  			0 	 	0x0C	
+	  // 3			0   	1  	 0  			0	 		0x04
+	  // 4			0  	  1 	 1  			0			0x06	
+		// 5			0  	  0  	 1  			0   	0x02
+		// 6			0   	0 	 1  			1   	0x03
+	  // 7			1  	  0 	 0  			1   	0x09
+	  // 8			1   	0 	 0  			0   	0x08
 		//voltas = 2048 passos para o modo full-step dar uma volta 32x64
 		//voltas = 4096 passos para o modo half-step dar uma volta 64x64
 	
@@ -304,18 +305,18 @@ void Girar_motor(uint32_t sentido,uint32_t modo){
 					SysTick_Wait1ms(step_delay);
 					GPIO_PORTH_AHB_DATA_R = 0x03;
 					SysTick_Wait1ms(step_delay);
-					GPIO_PORTH_AHB_DATA_R = 0x01;
-					SysTick_Wait1ms(step_delay);
 					GPIO_PORTH_AHB_DATA_R = 0x09;
+					SysTick_Wait1ms(step_delay);
+					GPIO_PORTH_AHB_DATA_R = 0x08;
 					SysTick_Wait1ms(step_delay);
 				
 				
 			}
 			if(sentido == 1){
 			
-					GPIO_PORTH_AHB_DATA_R = 0x09;
+					GPIO_PORTH_AHB_DATA_R = 0x08;
 					SysTick_Wait1ms(step_delay);
-					GPIO_PORTH_AHB_DATA_R = 0x01;
+					GPIO_PORTH_AHB_DATA_R = 0x09;
 					SysTick_Wait1ms(step_delay);
 					GPIO_PORTH_AHB_DATA_R = 0x03;
 					SysTick_Wait1ms(step_delay);
@@ -416,8 +417,10 @@ void sequencia_leds(uint32_t sentido){
 
 void GPIOPortJ_Handler(){
 	//Testando se J0 causou a interrupcao
-	if(GPIO_PORTJ_AHB_RIS_R == 0x01){
+	// J0 força o retorno para o estado 0
+	if((GPIO_PORTJ_AHB_RIS_R & 0x01) == 0x01){
 	//J0 causou a interrupcao
+		controle = 0;
 		estado = 0;
 	}
 	GPIO_PORTJ_AHB_ICR_R = 0x01;

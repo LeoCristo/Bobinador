@@ -22,7 +22,7 @@
   
   <h3>Componentes utilizados</h3>
       <h4>Conjunto montado</h4>
-  <img src="projeto.png" alt="projeto montado">
+  <img src="projeto.jpg" alt="projeto montado">
       <h4>microcontrolador Tiva TM4C1294</h4>
   <img src="tiva.PNG" alt="Imagem do microcontrolador">
       <h4>display 16x2</h4>

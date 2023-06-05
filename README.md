@@ -23,10 +23,6 @@
   <ul>
     <li>Leonardo Braga</li>
   </ul>
-
-  <h3>Licença</h3>
-  <p>Este projeto está licenciado sob [tipo de licença]. Consulte o arquivo LICENSE para obter mais informações.</p>
-
   <h3>Componentes utilizados</h3>
   <img src="caminho/para/imagem.jpg" alt="Imagem do Projeto">
 </body>

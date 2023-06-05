@@ -14,6 +14,7 @@
     <li><strong>Nome da IDE:</strong> uVision da Keil</li>
     <li><strong>Nome da linguagem:</strong> C</li>
     <li><strong>Nome do Microcontrolador:</strong> TM4C1294</li>
+    <li><strong>Nome da disciplina:</strong> Microcontroladores</li>
     <li><strong>Descrição:</strong>Circuito de controle de um motor de passos, por meio da entrada de um teclado 4x4 matricial e um display 16x2 lcd. </li
   </ul>
   

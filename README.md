@@ -4,10 +4,10 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>RISC-V - README</title>
+ 
 </head>
 <body>
-  <h1>Bobinador utilizando o microcontrolador TM4C1294</h1>
+  <h3>Bobinador utilizando o microcontrolador TM4C1294</h3>
 
   <h2>Circuito de controle de um motor de passos, por meio da entrada de um teclado 4x4 matricial e um display 16x2 lcd.</h2>
   

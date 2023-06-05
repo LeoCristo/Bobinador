@@ -25,12 +25,6 @@
   <img src="projeto.jpg" alt="projeto montado">
       <h4>microcontrolador Tiva TM4C1294</h4>
   <img src="tiva.PNG" alt="Imagem do microcontrolador">
-      <h4>display 16x2</h4>
-  <img src="display-lcd-16x2-com-fundo-verde.jpg" alt="Imagem do display 16x2">
-       
-      <h3>Autores</h3>
-  <ul>
-    <li>Leonardo Braga</li>
-  </ul>
+  
 </body>
 </html>

@@ -24,6 +24,11 @@
     <li>Leonardo Braga</li>
   </ul>
   <h3>Componentes utilizados</h3>
-  <img src="caminho/para/imagem.jpg" alt="Imagem do Projeto">
+      <h4>microcontrolador Tiva TM4C1294</h4>
+  <img src="tiva.PNG" alt="Imagem do microcontrolador">
+      <h4>display 16x2</h4>
+  <img src="display-lcd-16x2-com-fundo-verde.png" alt="Imagem do display 16x2">
+       <h4>teclado matricial 4x4</h4>
+  <img src="teclado 4x4.png" alt="teclado matricial 4x4">
 </body>
 </html>

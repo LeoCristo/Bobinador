@@ -11,6 +11,8 @@
   <h3>Visão Geral do Projeto</h3>
   <ul>
     <li><strong>Nome do Projeto:</strong> Controle de motor de passo</li>
+    <li><strong>Nome da IDE:</strong> uVision da Keil</li>
+    <li><strong>Nome da linguagem:</strong> C</li>
     <li><strong>Descrição:</strong>Circuito de controle de um motor de passos, por meio da entrada de um teclado 4x4 matricial e um display 16x2 lcd. </li
   </ul>
   
